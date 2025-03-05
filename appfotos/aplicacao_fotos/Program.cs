@@ -11,8 +11,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+//Login etc, podemos ter várias base de dados
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true) //receber o código no email para inserir depois
+    .AddEntityFrameworkStores<ApplicationDbContext>(); //Onde está o utilizador - Base de dados
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
